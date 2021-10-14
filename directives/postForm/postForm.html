@@ -1,0 +1,9 @@
+<div class="post-form">
+<form class="add-edit-form">
+    <h2 class="post-heading">{{heading}}</h2>
+    <input class="post-input" type="text" ng-model="postDetail.title" placeholder="Title">
+    <input class="post-input" type="text" ng-model="postDetail.body" placeholder="Write something...">
+    <select class="post-input" type="text" ng-model="postDetail.userId" ng-options="x.name for x in names" placeholder="Select user"></select>
+    <input class="save-btn" type="submit" value="Save">
+</form>
+</div>

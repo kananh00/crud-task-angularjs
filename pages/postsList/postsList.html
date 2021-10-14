@@ -1,0 +1,12 @@
+<header-menu go-to-add="goAddPage()" go-to-list="goListPage()"></header-menu>
+<div class="container fluid">
+    <div class="row">
+        <div class="col-12 col-md-6" ng-repeat="post in list">
+            <single-post post-info="post" delete-single-post="deleteSinglePost(postID)"></single-post>
+            <div class="buttons">
+                <button class="single-post-btn edit-btn">Edit</button>
+                <button ng-click="deleteSinglePost(post.id)" class="single-post-btn delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

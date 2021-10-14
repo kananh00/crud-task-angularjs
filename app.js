@@ -1,0 +1,1 @@
+var crudTask  = angular.module("crudTask", ["ngRoute", "ngResource"]);

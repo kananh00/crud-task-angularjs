@@ -1,0 +1,6 @@
+.home-title{
+    display: flex;
+    margin-top: 30vh;
+    justify-content: center;
+    align-items: center;
+}
