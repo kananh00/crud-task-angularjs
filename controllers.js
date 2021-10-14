@@ -59,11 +59,6 @@ crudTask.controller("addController", [
       $location.path("/list");
       // console.log("hi");
     };
-    // $scope.users=[
-    //   {name: "men"},
-    //   {name: "sen"},
-    //   {name: "o"}
-    // ]
     $http({
       method: "GET",
       url: "https://jsonplaceholder.typicode.com/users",
@@ -102,22 +97,18 @@ crudTask.controller("listController", [
       // console.log("hi");
     };
 
-    // $scope.get = async function () {
-    //   await postApiService.getList();
-    //   $scope.list = formInputService.posts;
-    //   console.log($scope.list);
-    //   console.log(formInputService.posts);
-    // };
-    $scope.deleteSinglePost = function(postId){
-      postApiService.deletePost(postId);
+    // $scope.list =  postApiService.getList();
+    $scope.deleteSinglePost = function(post){
+      postApiService.deletePost(post);
     } 
     $http({
       method: "GET",
       url: "https://jsonplaceholder.typicode.com/posts",
     }).then(
       function successCallback(response) {
-        $scope.list = response.data;
-        // console.log(response.data);
+        formInputService.posts.push(response.data);
+        $scope.list = formInputService.posts[0];
+        console.log(formInputService.posts);
         return response.data;
       },
       function errorCallback(response) {

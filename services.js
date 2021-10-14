@@ -15,7 +15,7 @@ crudTask.service("postApiService", ["$http", "formInputService", function($http,
       
           }).then(function successCallback(response) {
             alert("Success, the post is created");
-            formInputService.posts.push(response.data);
+            formInputService.posts[0].push(response.data);
             console.log(formInputService.posts)
       
           }, function errorCallback(response) {
@@ -32,8 +32,9 @@ crudTask.service("postApiService", ["$http", "formInputService", function($http,
       }).then(function successCallback(response) {
     
         formInputService.posts = response.data;
+        var list = formInputService.posts;
         console.log(response.data)
-        return response.data;
+        return list;
         
       }, function errorCallback(response) {
     
@@ -41,17 +42,16 @@ crudTask.service("postApiService", ["$http", "formInputService", function($http,
     
       });
     }
-    this.deletePost = function(id){
+    this.deletePost = function(post){
       $http({
-
         method: 'DELETE',
-        url: 'https://jsonplaceholder.typicode.com/posts/' + id
+        url: 'https://jsonplaceholder.typicode.com/posts/' + post.id
   
       }).then(function successCallback(response) {
   
-        alert(`Post ${id} has deleted Successfully`);
-        // var index = formInputService.posts.indexOf(user);
-        // $scope.users.splice(index, 1);
+        alert(`Post ${post.id} has deleted Successfully`);
+        var index = formInputService.posts[0].indexOf(post);
+        formInputService.posts[0].splice(index, 1);
   
       }, function errorCallback(response) {
   
