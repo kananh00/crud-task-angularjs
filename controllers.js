@@ -57,8 +57,8 @@ crudTask.controller("addController", [
     });
     $scope.goListPage = function () {
       $location.path("/list");
-      // console.log("hi");
     };
+    $scope.btnName = "Save";
     $http({
       method: "GET",
       url: "https://jsonplaceholder.typicode.com/users",
@@ -78,8 +78,8 @@ crudTask.controller("addController", [
       // console.log("submitted");
       var userID = formInputService.postDetail.userId.id;
       formInputService.postDetail.userId = userID;
+      $location.path("/list");
       // console.log(formInputService.postDetail);
-      
     };
   },
 ]);
@@ -96,11 +96,18 @@ crudTask.controller("listController", [
       $location.path("/add");
       // console.log("hi");
     };
-
+    $scope.goEditPage = function (post) {
+      $location.path("/edit");
+      formInputService.editablePost = post;
+      // console.log("hi");
+    };
     // $scope.list =  postApiService.getList();
-    $scope.deleteSinglePost = function(post){
+    $scope.deleteSinglePost = function (post) {
       postApiService.deletePost(post);
-    } 
+    };
+    // $scope.updateSinglePost = function(post){
+    //   postApiService.editPost(post);
+    // }
     $http({
       method: "GET",
       url: "https://jsonplaceholder.typicode.com/posts",
@@ -115,5 +122,52 @@ crudTask.controller("listController", [
         alert("Error. Try Again!");
       }
     );
+  },
+]);
+
+crudTask.controller("editController", [
+  "$scope",
+  "$location",
+  "$http",
+  "postApiService",
+  "formInputService",
+  function ($scope, $location, $http, postApiService, formInputService) {
+    $scope.postHeading = "Edit the post";
+    $scope.goListPage = function () {
+      $location.path("/list");
+    };
+    $scope.goAddPage = function () {
+      $location.path("/add");
+    };
+    $scope.btnName = "Edit";
+
+    $http({
+      method: "GET",
+      url: "https://jsonplaceholder.typicode.com/users",
+    }).then(
+      function successCallback(response) {
+        $scope.users = response.data;
+        formInputService.users = response.data;
+        // console.log(response.data);
+        return response.data;
+      },
+      function errorCallback(response) {
+        alert("Error. Try Again!");
+      }
+    );
+    $scope.$watch("postDetail", function () {
+      $scope.postDetail = formInputService.editablePost;
+      // var id = formInputService.editablePost.userId;
+      // console.log(formInputService.users[id].name);
+      formInputService.postDetail = $scope.postDetail;
+      // $scope.postDetail.userId = formInputService.users[formInputService.editablePost.userId].name;
+    });
+    $scope.editSinglePost = function(){  
+      postApiService.editPost(formInputService.postDetail);
+      console.log(formInputService.postDetail.userId)
+      var userID = formInputService.postDetail.userId.id;
+      formInputService.postDetail.userId = userID;
+      $location.path("/list");
+    }
   },
 ]);

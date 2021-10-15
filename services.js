@@ -2,7 +2,9 @@ crudTask.service("formInputService", function () {
     this.userEmail = "";
     this.userPassword = "";
     this.postDetail = [];
-    this.posts = []
+    this.posts = [];
+    this.editablePost = [];
+    this.users = [];
   });
 
 crudTask.service("postApiService", ["$http", "formInputService", function($http, formInputService){
@@ -59,4 +61,21 @@ crudTask.service("postApiService", ["$http", "formInputService", function($http,
   
       });
     }
+    this.editPost = function(post){
+      $http({
+        method: 'PUT',
+        url: 'https://jsonplaceholder.typicode.com/users/' + post.id,
+        data: post
+  
+      }).then(function successCallback(response) {
+  
+        alert("User has updated Successfully")
+  
+      }, function errorCallback(response) {
+  
+        alert("Error. while updating user Try Again!");
+  
+      });
+  
+    };
 }])

@@ -4,7 +4,7 @@
         <div class="col-12 col-md-6" ng-repeat="post in list">
             <single-post post-info="post" delete-single-post="deleteSinglePost(postID)"></single-post>
             <div class="buttons">
-                <button class="single-post-btn edit-btn">Edit</button>
+                <button ng-click="goEditPage(post)" class="single-post-btn edit-btn">Edit</button>
                 <button ng-click="deleteSinglePost(post)" class="single-post-btn delete-btn">Delete</button>
             </div>
         </div>

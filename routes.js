@@ -16,4 +16,8 @@ crudTask.config(function ($routeProvider) {
       templateUrl: "pages/postsList/postsList.html",
       controller: "listController",
     })
+    .when("/edit", {
+      templateUrl: "pages/editPost/editPost.html",
+      controller: "editController",
+    })
 });

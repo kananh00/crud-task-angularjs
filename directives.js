@@ -17,9 +17,10 @@ crudTask.directive("postForm", function(){
         replace: true,
         scope: {
             heading: "=",
+            btnName: "=",
             submitPost: '&ngSubmit',
             postDetail: '=ngModel',
-             names: "="
+            names: "="
         }
 
     }
@@ -32,7 +33,6 @@ crudTask.directive("singlePost", function(){
         replace: true,
         scope: {
             postInfo: "=",
-           
         }
     }
 })
