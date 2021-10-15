@@ -169,5 +169,9 @@ crudTask.controller("editController", [
       formInputService.postDetail.userId = userID;
       $location.path("/list");
     }
+    $scope.deleteSinglePostInEdit = function(){
+      postApiService.deletePost(formInputService.postDetail);
+      $location.path("/list");
+    }
   },
 ]);

@@ -1,5 +1,5 @@
 <header-menu go-to-add="goAddPage()" go-to-list="goListPage()"></header-menu>
-<div class="container fluid">
+<!-- <div class="container fluid">
     <div class="row">
         <div class="col-12 col-md-6" ng-repeat="post in list">
             <single-post post-info="post" delete-single-post="deleteSinglePost(postID)"></single-post>
@@ -9,4 +9,22 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<table>
+    <tr>
+        <th>Title</td>
+        <th>Body</td>
+        <td></td>
+    </tr>
+    <tr ng-repeat="post in list">
+        <td class="post-title">{{post.title}}</td>
+        <td>{{post.body}}</td>
+        <td>            
+            <div class="buttons">
+                <button ng-click="goEditPage(post)" class="single-post-btn edit-btn">Edit</button>
+                <button ng-click="deleteSinglePost(post)" class="single-post-btn delete-btn">Delete</button>
+            </div>
+        </td>
+    </tr>
+</table>

@@ -57,7 +57,7 @@ crudTask.service("postApiService", ["$http", "formInputService", function($http,
   
       }, function errorCallback(response) {
   
-        alert("Error. while deleting user Try Again!");
+        alert("Error happened in deleting process!");
   
       });
     }
@@ -69,11 +69,11 @@ crudTask.service("postApiService", ["$http", "formInputService", function($http,
   
       }).then(function successCallback(response) {
   
-        alert("User has updated Successfully")
+        alert("Post has updated successfully")
   
       }, function errorCallback(response) {
   
-        alert("Error. while updating user Try Again!");
+        alert("Error happened in editing process!");
   
       });
   
