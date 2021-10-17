@@ -74,10 +74,11 @@ crudTask.controller("addController", [
     );
     $scope.addPost = function () {
       postApiService.createPost(formInputService.postDetail);
+      console.log($scope.postDetail);
       $scope.postDetail = {};
       // console.log("submitted");
-      var userID = formInputService.postDetail.userId.id;
-      formInputService.postDetail.userId = userID;
+      // var userID = formInputService.postDetail.userId.id;
+      // formInputService.postDetail.userId = userID;
       $location.path("/list");
       // console.log(formInputService.postDetail);
     };

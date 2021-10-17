@@ -13,11 +13,13 @@
 
 <table>
     <tr>
+        <th>{{'Index'}}</th>
         <th>Title</td>
         <th>Body</td>
         <td></td>
     </tr>
     <tr ng-repeat="post in list">
+        <td>{{ $index + 1 }}</td>
         <td class="post-title">{{post.title}}</td>
         <td>{{post.body}}</td>
         <td>            
